@@ -1,2 +1,6 @@
-node_modules/ 
+node_modules/
 dist/
+cypress/screenshots/
+cypress/downloads/
+cypress/videos/
+.DS_Store
