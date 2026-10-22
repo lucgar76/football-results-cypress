@@ -2,7 +2,7 @@
 
 Automated end-to-end tests for fetching football results from Sky Sports using [Cypress](https://www.cypress.io/).
 
-The test suite navigates Sky Sports, accepts the cookie consent popup, browses to the Scores & Fixtures section, filters by Manchester City, and verifies the Premier League table page loads correctly.
+The test suite navigates Sky Sports and Olé, accepts or dismisses consent popups, opens football scores, and checks Manchester City and Atlético Tucumán results.
 
 ---
 
@@ -68,7 +68,7 @@ npm run cypress:open
 In the Cypress UI:
 1. Select **E2E Testing**
 2. Choose **Chrome** as the browser
-3. Click on `skysports-results-mancity.cy.ts` to run the test
+3. Click a spec under `cypress/e2e` to run it
 
 ---
 
@@ -76,17 +76,25 @@ In the Cypress UI:
 
 | File | Description |
 |------|-------------|
-| `cypress/e2e/skysports-results-mancity.cy.ts` | Navigates Sky Sports → Scores & Fixtures → Manchester City → Premier League table |
+| `cypress/e2e/skysports-results-mancity.cy.ts` | Navigates Sky Sports → Scores → Football → Manchester City → Premier League table |
+| `cypress/e2e/ole-resultados-at.cy.ts` | Navigates Olé → Olé Resultados → Liga Profesional standings → Atlético Tucumán |
 
-### What the test does
+### What the Sky Sports test does
 
 1. Visits [skysports.com](https://www.skysports.com/)
 2. Accepts the cookie consent popup
-3. Clicks the **Scores** nav link and arrives at the live scores page
-4. Navigates to **Football Scores & Fixtures**
+3. Opens the **Scores** menu and chooses **Football**
+4. Lands on **Football Scores & Fixtures**
 5. Opens the **Teams** dropdown and selects **Manchester City**
 6. Clicks through to **Manchester City Scores & Fixtures**
 7. Clicks **View table** to reach the **Premier League table** page
+
+### What the Olé test does
+
+1. Visits [ole.com.ar](https://www.ole.com.ar/) and dismisses overlays
+2. Clicks **Olé Resultados**
+3. Opens **Liga Profesional** with **Ver tabla**
+4. Opens **Atlético Tucumán** and checks the Resultados tab
 
 ---
 
@@ -96,7 +104,8 @@ In the Cypress UI:
 football-results-cypress/
 ├── cypress/
 │   ├── e2e/
-│   │   └── skysports-results-mancity.cy.ts   # Main test file
+│   │   ├── skysports-results-mancity.cy.ts   # Sky Sports → Man City
+│   │   └── ole-resultados-at.cy.ts           # Olé → Atlético Tucumán
 │   └── support/
 │       └── e2e.ts                             # Cypress support file
 ├── src/                                       # TypeScript source (non-test code)
